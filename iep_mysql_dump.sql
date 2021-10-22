@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Linux (x86_64)
+-- MySQL dump 10.19  Distrib 10.2.38-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: car_parts_gui
 -- ------------------------------------------------------
--- Server version	8.0.26-0ubuntu0.20.04.2
+-- Server version	10.2.38-MariaDB-10.2.38+maria~xenial-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -16,21 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `car_parts_gui`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `car_parts_gui` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `car_parts_gui`;
+
+--
 -- Table structure for table `car_parts`
 --
 
 DROP TABLE IF EXISTS `car_parts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `car_parts` (
-  `code` int DEFAULT NULL,
-  `product_name` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
+  `code` int(11) DEFAULT NULL,
+  `product_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `client_price` float DEFAULT NULL,
-  `application` varchar(100) DEFAULT NULL,
-  `manufacturer` varchar(50) DEFAULT NULL
+  `application` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manufacturer` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `car_parts`
+--
+
+LOCK TABLES `car_parts` WRITE;
+/*!40000 ALTER TABLE `car_parts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `car_parts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `orders`
@@ -38,15 +55,24 @@ CREATE TABLE `car_parts` (
 
 DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `date` datetime DEFAULT NULL,
-  `user` varchar(50) DEFAULT NULL,
-  `ordered_parts` varchar(200) DEFAULT NULL,
+  `user` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ordered_parts` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_costs` float DEFAULT NULL,
   `profit` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -54,17 +80,26 @@ CREATE TABLE `orders` (
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `role` varchar(5) DEFAULT NULL,
-  `first_name` varchar(20) DEFAULT NULL,
-  `last_name` varchar(20) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `phone_number` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `created` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `role` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -75,4 +110,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-19 19:16:26
+-- Dump completed on 2021-10-22 20:13:12

@@ -13,6 +13,7 @@ class MainWidget(qtw.QWidget):
         super().__init__(*args, **kwargs)
         self.setup_ui()
         self.db_connect = read_db_config()
+        self.mydb = db_connect()
         self.textfield = qtw.QLabel()
         self.table_widget = qtw.QTableWidget()
         self.cursor = qtg.QTextCursor()
@@ -71,7 +72,7 @@ class MainWidget(qtw.QWidget):
             password = self.password_input.text()
             mydb = db_connect()
             mycursor = mydb.cursor()
-            query = f""" SELECT * FROM users WHERE 
+            query = f""" SELECT * FROM users WHERE
             email='{email}' AND password='{password}'
             """
             mycursor.execute(query)
